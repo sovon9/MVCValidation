@@ -5,7 +5,7 @@
 <title>Test Thymeleaf</title>
 </head>
 <body>
-		<form th:action="@{/saveStudent}" th:object="${student}" method="post" style="padding-left:30%">
+		<form th:action="@{/saveStudentData}" th:object="${student}" method="post" style="padding-left:30%">
 			<table>
 				<tr>
 					<td><label>First Name (*)</label></td>
@@ -29,6 +29,14 @@
 					<td>
 						<!-- add error message if present-->
 						<span th:if="${#fields.hasErrors('phnumber')}" th:errors="${student.phnumber}"></span>
+					</td>
+				</tr>
+				<tr>
+					<td><label>Email (*)</label></td>
+					<td><input type="text" th:field="${student.email}"></td>
+					<td>
+						<!-- add error message if present-->
+						<span th:if="${#fields.hasErrors('email')}" th:errors="${student.email}"></span>
 					</td>
 				</tr>
 				<tr>

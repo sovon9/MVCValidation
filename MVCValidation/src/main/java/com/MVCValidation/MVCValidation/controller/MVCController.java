@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.MVCValidation.MVCValidation.model.Student;
+import com.MVCValidation.MVCValidation.model.StudentWithCustomValidation;
 
 @Controller
 public class MVCController {
@@ -41,6 +42,26 @@ public class MVCController {
 	{
 		model.addAttribute("student", new Student());
 		return "studentform";
+	}
+	
+	/*******************************************************************************************************/
+	
+	@GetMapping("/studentForm-custannotation")
+	public String getStudentFormWithCustomAnnotation(Model model)
+	{
+		model.addAttribute("student", new StudentWithCustomValidation());
+		return "studentformcustval";
+	}
+	
+	@PostMapping("/saveStudentData")
+	public String getStudentData(@Valid @ModelAttribute("student") StudentWithCustomValidation student, BindingResult bindingResult)
+	{
+		System.out.println(student);
+		if(bindingResult.hasErrors())
+		{
+			return "studentformcustval";
+		}
+		return "studentdatacustval";
 	}
 	
 }

@@ -14,6 +14,8 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.MVCValidation.MVCValidation.controller.MVCController;
+
 @AutoConfigureMockMvc
 @WebMvcTest(controllers = {MVCController.class}) // can specify the conteroller's we want to test
 class MvcValidationApplicationTests {

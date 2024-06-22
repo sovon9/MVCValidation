@@ -24,6 +24,14 @@
 					</td>
 				</tr>
 				<tr>
+					<td><label>Phone Number (*)</label></td>
+					<td><input type="text" th:field="${student.phnumber}"></td>
+					<td>
+						<!-- add error message if present-->
+						<span th:if="${#fields.hasErrors('phnumber')}" th:errors="${student.phnumber}"></span>
+					</td>
+				</tr>
+				<tr>
 					<td><input type="submit" value="Submit"></td>
 				</tr>
 			</table>
