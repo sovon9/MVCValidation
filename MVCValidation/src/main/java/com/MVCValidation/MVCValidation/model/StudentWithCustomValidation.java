@@ -6,7 +6,9 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-public class Student {
+import com.MVCValidation.MVCValidation.customValidation.CustomValAnnotation;
+
+public class StudentWithCustomValidation {
 
 	@NotNull(message = "firstName is required")
 	/*
@@ -27,12 +29,14 @@ public class Student {
 
 	@Pattern(regexp = "^[0-9]{10}", message = "incorrect phone number")
 	private String phnumber;
+	@CustomValAnnotation("@cognizant.com") // we can provide message="must end with xyz...."
+	private String email;
 	
-	public Student() {
+	public StudentWithCustomValidation() {
 		super();
 	}
 	
-	public Student(String firstName, String lastName) {
+	public StudentWithCustomValidation(String firstName, String lastName) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -61,10 +65,19 @@ public class Student {
 	public void setPhnumber(String phnumber) {
 		this.phnumber = phnumber;
 	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	@Override
 	public String toString() {
-		return "Student [firstName=" + firstName + ", lastName=" + lastName + ", phnumber=" + phnumber + "]";
+		return "StudentWithCustomValidation [firstName=" + firstName + ", lastName=" + lastName + ", phnumber="
+				+ phnumber + ", email=" + email + "]";
 	}
 	
 }
